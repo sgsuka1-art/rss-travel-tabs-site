@@ -29,6 +29,7 @@ function render(i){
  const itemsHtml=f.items.length?`<div class="grid">${f.items.map(it=>`<article class="card item"><h3 class="zh">${it.title_zh}</h3><p class="orig">原文：${it.title}</p><div class="meta">發佈時間（GMT+8）：${it.time}</div><a href="${it.link}" target="_blank" rel="noopener">查看原文</a></article>`).join('')}</div>`:`<article class="card">目前沒有資料</article>`;
  view.innerHTML=digestHtml+itemsHtml;
 }
-feeds.forEach((f,i)=>{const b=document.createElement('button');b.className='tab'+(i===0?' active':'');b.textContent=f.name;b.onclick=()=>render(i);tabs.appendChild(b);});
+const tabNames=['SHL','ADAT','Taoyuan','省錢','阿達'];
+feeds.forEach((f,i)=>{const b=document.createElement('button');b.className='tab'+(i===0?' active':'');b.textContent=tabNames[i]||f.name;b.onclick=()=>render(i);tabs.appendChild(b);});
 if(feeds.length) render(0); else view.innerHTML='<article class="card">沒有 feed 資料</article>';
 </script></body></html>
